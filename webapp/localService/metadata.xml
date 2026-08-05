@@ -1,0 +1,280 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="MDC_CUSTOM_OBJECT_SRV" xml:lang="en" sap:schema-version="2">
+			<EntityType Name="CustObject" sap:content-version="1">
+				<Key><PropertyRef Name="BO_TYPE"/><PropertyRef Name="TABLE_NAME"/></Key><Property Name="BO_TYPE" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Bus. Obj. Type" sap:sortable="false"/><Property Name="TABLE_NAME" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Table" sap:sortable="false"/><Property Name="BO_TYPE_DESCR" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Description" sap:sortable="false"
+					sap:filterable="false"/><Property Name="STATUS" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Status" sap:sortable="false" sap:filterable="false"/><Property Name="TABLE_ALIAS" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Alias" sap:sortable="false" sap:filterable="false"/><Property Name="TABLE_TEMPL" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Table" sap:sortable="false" sap:filterable="false"/><Property Name="PACKAGE_NAME" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Package" sap:sortable="false"
+					sap:filterable="false"/><Property Name="HDB_PACKAGE_NAME" Type="Edm.String" Nullable="false" MaxLength="190" sap:label="HANA Package" sap:sortable="false"
+					sap:filterable="false"/><Property Name="SOURCE_TABLE" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Table" sap:sortable="false"
+					sap:filterable="false"/><Property Name="WB_REQUEST" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request/Task" sap:sortable="false"
+					sap:filterable="false"/><Property Name="CU_REQUEST" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request/Task" sap:sortable="false"
+					sap:filterable="false"/><NavigationProperty Name="Fields" Relationship="MDC_CUSTOM_OBJECT_SRV.ToCustObjectFields" FromRole="FromRole_ToCustObjectFields"
+					ToRole="ToRole_ToCustObjectFields"/></EntityType>
+			<EntityType Name="CustObjectDet" sap:content-version="1">
+				<Key><PropertyRef Name="BO_TYPE"/><PropertyRef Name="TABLE_NAME"/><PropertyRef Name="FIELD_NAME"/></Key><Property Name="BO_TYPE" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Bus. Obj. Type" sap:sortable="false"/><Property Name="TABLE_NAME" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Table" sap:sortable="false"/><Property Name="FIELD_NAME" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Field Name" sap:sortable="false"/><Property Name="FIELD_DESCR" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Field Description" sap:sortable="false"
+					sap:filterable="false"/><Property Name="FIELD_TYPE" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Type Name" sap:sortable="false"
+					sap:filterable="false"/><Property Name="FIELD_LENGTH" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="No. of Characters" sap:sortable="false"
+					sap:filterable="false"/><Property Name="FIELD_IS_KEY" Type="Edm.Boolean" Nullable="false" sap:label="TRUE" sap:sortable="false" sap:filterable="false"/><Property Name="MATCHING_IND" Type="Edm.Boolean" Nullable="false" sap:label="TRUE" sap:sortable="false" sap:filterable="false"/><Property Name="PACKAGE_NAME" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Package" sap:sortable="false"
+					sap:filterable="false"/><Property Name="HDB_PACKAGE_NAME" Type="Edm.String" Nullable="false" MaxLength="190" sap:label="HANA Package" sap:sortable="false"
+					sap:filterable="false"/><Property Name="WB_REQUEST" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request/Task" sap:sortable="false"
+					sap:filterable="false"/><Property Name="CU_REQUEST" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request/Task" sap:sortable="false"
+					sap:filterable="false"/><Property Name="STATUS" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Status" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SHCustObjCuRq" sap:content-version="1">
+				<Key><PropertyRef Name="CU_REQUEST"/></Key><Property Name="CU_REQUEST" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request/Task" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CU_REQUEST_DESCR" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Short Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SHCustObjWbRq" sap:content-version="1">
+				<Key><PropertyRef Name="WB_REQUEST"/></Key><Property Name="WB_REQUEST" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request/Task" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="WB_REQUEST_DESCR" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Short Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SHCustObjDclass" sap:content-version="1">
+				<Key><PropertyRef Name="PACKAGE_NAME"/></Key><Property Name="PACKAGE_NAME" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Package" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PACKAGE_NAME_DESCR" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Short Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SHCustObjOTC" sap:content-version="1">
+				<Key><PropertyRef Name="BO_TYPE"/></Key><Property Name="BO_TYPE" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Bus. Obj. Type" sap:creatable="false"
+					sap:updatable="false"/><Property Name="BO_TYPE_DESCR" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SHCustObjTabTpl" sap:content-version="1">
+				<Key><PropertyRef Name="TABLE_TEMPL"/></Key><Property Name="TABLE_TEMPL" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Table" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TABLE_TEMPL_DESCR" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Short text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__Currency" sap:content-version="1">
+				<Key><PropertyRef Name="CurrencyCode"/></Key><Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/><Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/><Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/><Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/></EntityType>
+			<EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+				<Key><PropertyRef Name="UnitCode"/></Key><Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/><Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO Code"/><Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/><Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Meas. Unit Text"/><Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/></EntityType>
+			<EntityType Name="SAP__DocumentDescription" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID"/><Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/><Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="256"/><Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256"/><NavigationProperty Name="Format" Relationship="MDC_CUSTOM_OBJECT_SRV.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/><NavigationProperty Name="TableColumns" Relationship="MDC_CUSTOM_OBJECT_SRV.to_tablecolumns" FromRole="FromRole_to_tablecolumns"
+					ToRole="ToRole_to_tablecolumns"/><NavigationProperty Name="CoverPage" Relationship="MDC_CUSTOM_OBJECT_SRV.to_coverpage" FromRole="FromRole_to_coverpage"
+					ToRole="ToRole_to_coverpage"/><NavigationProperty Name="Signature" Relationship="MDC_CUSTOM_OBJECT_SRV.to_signature" FromRole="FromRole_to_signature"
+					ToRole="ToRole_to_signature"/><NavigationProperty Name="PDFStandard" Relationship="MDC_CUSTOM_OBJECT_SRV.to_pdfstandard" FromRole="FromRole_to_pdfstandard"
+					ToRole="ToRole_to_pdfstandard"/><NavigationProperty Name="Hierarchy" Relationship="MDC_CUSTOM_OBJECT_SRV.to_Hierarchy" FromRole="FromRole_to_Hierarchy"
+					ToRole="ToRole_to_Hierarchy"/><NavigationProperty Name="Header" Relationship="MDC_CUSTOM_OBJECT_SRV.to_header" FromRole="FromRole_to_header" ToRole="ToRole_to_header"/><NavigationProperty Name="Footer" Relationship="MDC_CUSTOM_OBJECT_SRV.to_Footer" FromRole="FromRole_to_Footer" ToRole="ToRole_to_Footer"/></EntityType>
+			<EntityType Name="SAP__Format" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="FitToPage" Type="MDC_CUSTOM_OBJECT_SRV.SAP__FitToPage" Nullable="false"/><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="FontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Orientation" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PaperSize" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="BorderSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="MarginSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="FontName" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Font Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Padding" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__PDFStandard" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="UsePDFAConformance" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DoEnableAccessibility" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__TableColumns" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/><PropertyRef Name="Name"/><PropertyRef Name="Header"/></Key><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Header" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="HorizontalAlignment" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__CoverPage" sap:content-version="1">
+				<Key><PropertyRef Name="Title"/><PropertyRef Name="Id"/><PropertyRef Name="Name"/></Key><Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__Signature" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DoSign" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Reason" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__Hierarchy" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DistanceFromRootElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DrillStateElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__PDFHeader" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Right" Type="MDC_CUSTOM_OBJECT_SRV.SAP__HeaderFooterField" Nullable="false"/><Property Name="Left" Type="MDC_CUSTOM_OBJECT_SRV.SAP__HeaderFooterField" Nullable="false"/><Property Name="Center" Type="MDC_CUSTOM_OBJECT_SRV.SAP__HeaderFooterField" Nullable="false"/><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__PDFFooter" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Right" Type="MDC_CUSTOM_OBJECT_SRV.SAP__HeaderFooterField" Nullable="false"/><Property Name="Left" Type="MDC_CUSTOM_OBJECT_SRV.SAP__HeaderFooterField" Nullable="false"/><Property Name="Center" Type="MDC_CUSTOM_OBJECT_SRV.SAP__HeaderFooterField" Nullable="false"/><Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="SAP__ValueHelp" sap:content-version="1">
+				<Key><PropertyRef Name="VALUEHELP"/></Key><Property Name="VALUEHELP" Type="Edm.String" Nullable="false"/><Property Name="FIELD_VALUE" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="DESCRIPTION" Type="Edm.String"/></EntityType>
+			<ComplexType Name="SAP__FitToPage"><Property Name="ErrorRecoveryBehavior" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Error behavior" sap:creatable="false"
+				sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IsEnabled" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+				sap:filterable="false"/><Property Name="MinimumFontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+				sap:filterable="false"/></ComplexType>
+			<ComplexType Name="SAP__HeaderFooterField"><Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+				sap:filterable="false"/></ComplexType>
+			<Association Name="ToCustObjectFields" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.CustObject" Multiplicity="1" Role="FromRole_ToCustObjectFields"/><End Type="MDC_CUSTOM_OBJECT_SRV.CustObjectDet" Multiplicity="*" Role="ToRole_ToCustObjectFields"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToCustObjectFields"><PropertyRef Name="TABLE_NAME"/><PropertyRef Name="BO_TYPE"/></Principal>
+					<Dependent Role="ToRole_ToCustObjectFields"><PropertyRef Name="TABLE_NAME"/><PropertyRef Name="BO_TYPE"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_format" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_format"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_format"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_tablecolumns" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_tablecolumns"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_tablecolumns"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_coverpage" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_coverpage"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_coverpage"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_signature" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_signature"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_signature"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_pdfstandard" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_pdfstandard"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__PDFStandard" Multiplicity="1" Role="ToRole_to_pdfstandard"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_pdfstandard"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_pdfstandard"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_Hierarchy" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Hierarchy"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__Hierarchy" Multiplicity="1" Role="ToRole_to_Hierarchy"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_Hierarchy"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_Hierarchy"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_header" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_header"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__PDFHeader" Multiplicity="1" Role="ToRole_to_header"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_header"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_header"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_Footer" sap:content-version="1"><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Footer"/><End Type="MDC_CUSTOM_OBJECT_SRV.SAP__PDFFooter" Multiplicity="1" Role="ToRole_to_Footer"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_Footer"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_Footer"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="MDC_CUSTOM_OBJECT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx pdf"><EntitySet Name="SAP__Currencies" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__Currency" sap:content-version="1"/><EntitySet Name="SAP__UnitsOfMeasure" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__UnitOfMeasure" sap:content-version="1"/><EntitySet Name="SAP__MyDocumentDescriptions" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription" sap:content-version="1"/><EntitySet Name="SAP__FormatSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__Format" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__PDFStandardSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__PDFStandard" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__TableColumnsSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__TableColumns" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__CoverPageSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__CoverPage" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__SignatureSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__Signature" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__HierarchySet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__Hierarchy" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__PDFHeaderSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__PDFHeader" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__PDFFooterSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__PDFFooter" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SAP__ValueHelpSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SAP__ValueHelp" sap:content-version="1"/><EntitySet Name="CustObjectSet" EntityType="MDC_CUSTOM_OBJECT_SRV.CustObject" sap:pageable="false" sap:content-version="1"/><EntitySet Name="CustObjectDetSet" EntityType="MDC_CUSTOM_OBJECT_SRV.CustObjectDet" sap:pageable="false" sap:content-version="1"/><EntitySet Name="SHCustObjCuRqSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SHCustObjCuRq" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SHCustObjWbRqSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SHCustObjWbRq" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SHCustObjDclassSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SHCustObjDclass" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SHCustObjOTCSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SHCustObjOTC" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="SHCustObjTabTplSet" EntityType="MDC_CUSTOM_OBJECT_SRV.SHCustObjTabTpl" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="to_FooterSet" Association="MDC_CUSTOM_OBJECT_SRV.to_Footer" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Footer"/><End EntitySet="SAP__PDFFooterSet" Role="ToRole_to_Footer"/></AssociationSet>
+				<AssociationSet Name="to_headerSet" Association="MDC_CUSTOM_OBJECT_SRV.to_header" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_header"/><End EntitySet="SAP__PDFHeaderSet" Role="ToRole_to_header"/></AssociationSet>
+				<AssociationSet Name="to_formatSet" Association="MDC_CUSTOM_OBJECT_SRV.to_format" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/><End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/></AssociationSet>
+				<AssociationSet Name="to_pdfstandardSet" Association="MDC_CUSTOM_OBJECT_SRV.to_pdfstandard" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_pdfstandard"/><End EntitySet="SAP__PDFStandardSet" Role="ToRole_to_pdfstandard"/></AssociationSet>
+				<AssociationSet Name="to_tablecolumnsSet" Association="MDC_CUSTOM_OBJECT_SRV.to_tablecolumns" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/><End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/></AssociationSet>
+				<AssociationSet Name="to_signatureSet" Association="MDC_CUSTOM_OBJECT_SRV.to_signature" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/><End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/></AssociationSet>
+				<AssociationSet Name="ToCustObjectFieldsSet" Association="MDC_CUSTOM_OBJECT_SRV.ToCustObjectFields" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="CustObjectSet" Role="FromRole_ToCustObjectFields"/><End EntitySet="CustObjectDetSet" Role="ToRole_ToCustObjectFields"/></AssociationSet>
+				<AssociationSet Name="to_coverpageSet" Association="MDC_CUSTOM_OBJECT_SRV.to_coverpage" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/><End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/></AssociationSet>
+				<AssociationSet Name="to_HierarchySet" Association="MDC_CUSTOM_OBJECT_SRV.to_Hierarchy" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Hierarchy"/><End EntitySet="SAP__HierarchySet" Role="ToRole_to_Hierarchy"/></AssociationSet>
+				<FunctionImport Name="ACTIVATE" ReturnType="MDC_CUSTOM_OBJECT_SRV.CustObject" EntitySet="CustObjectSet" m:HttpMethod="POST"
+					sap:action-for="MDC_CUSTOM_OBJECT_SRV.CustObject"><Parameter Name="BO_TYPE" Type="Edm.String" Mode="In"/><Parameter Name="TABLE_NAME" Type="Edm.String" Mode="In"/><Parameter Name="WB_REQUEST" Type="Edm.String" Mode="In"/></FunctionImport>
+				<FunctionImport Name="DELETE" ReturnType="MDC_CUSTOM_OBJECT_SRV.CustObject" EntitySet="CustObjectSet" m:HttpMethod="POST"
+					sap:action-for="MDC_CUSTOM_OBJECT_SRV.CustObject"><Parameter Name="CU_REQUEST" Type="Edm.String" Mode="In"/><Parameter Name="BO_TYPE" Type="Edm.String" Mode="In"/><Parameter Name="TABLE_NAME" Type="Edm.String" Mode="In"/><Parameter Name="WB_REQUEST" Type="Edm.String" Mode="In"/></FunctionImport>
+			</EntityContainer><Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Core.SchemaVersion" String="2.0.0"/>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.MDC_CUSTOM_OBJECT_SRV_Entities">
+				<Annotation Term="SAP__CodeList.CurrencyCodes">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__Currencies"/></Record>
+				</Annotation>
+				<Annotation Term="SAP__CodeList.UnitsOfMeasure">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/></Record>
+				</Annotation>
+				<Annotation Term="SAP__PDF.Features">
+					<Record><PropertyValue Property="DocumentDescriptionReference" String="./$metadata"/><PropertyValue Property="DocumentDescriptionCollection" String="SAP__MyDocumentDescriptions"/><PropertyValue Property="ArchiveFormat" Bool="true"/><PropertyValue Property="CoverPage" Bool="true"/><PropertyValue Property="Signature" Bool="true"/><PropertyValue Property="FitToPage" Bool="true"/><PropertyValue Property="FontName" Bool="true"/><PropertyValue Property="FontSize" Bool="true"/><PropertyValue Property="Margin" Bool="true"/><PropertyValue Property="Border" Bool="true"/><PropertyValue Property="Padding" Bool="true"/><PropertyValue Property="HeaderFooter" Bool="true"/><PropertyValue Property="ResultSizeDefault" Int="20000"/><PropertyValue Property="ResultSizeMaximum" Int="20000"/></Record>
+				</Annotation>
+				<Annotation Term="SAP__CodeList.SAP__DocumentDescription">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__MyDocumentDescriptions"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__Currency/CurrencyCode"><Annotation Term="SAP__common.Text" Path="Text"/><Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/><Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__UnitOfMeasure/UnitCode"><Annotation Term="SAP__common.Text" Path="Text"/><Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/><Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/><Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__UnitOfMeasure">
+				<Annotation Term="SAP__core.AlternateKeys">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Key">
+								<Collection>
+									<Record><PropertyValue Property="Name" Path="ExternalCode"/><PropertyValue Property="Alias" String="ExternalCode"/></Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription/CreatedBy"><Annotation Term="SAP__core.Computed"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__DocumentDescription/CreatedAt"><Annotation Term="SAP__core.Computed"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__Format/FitToPage/ErrorRecoveryBehavior">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="../../../../SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27ErrorRecoveryBehaviour%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__Format/FontName">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__Format/PaperSize">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27PaperSize%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__PDFHeader/Left">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__PDFHeader/Right">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__PDFHeader/Center">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__PDFFooter/Left">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__PDFFooter/Right">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__PDFFooter/Center">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__Format/Orientation">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="MDC_CUSTOM_OBJECT_SRV.SAP__TableColumns/HorizontalAlignment">
+				<Annotation Term="SAP__common.ValueListReferences">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HorizontalAlignment%27"/></Record>
+				</Annotation><Annotation Term="SAP__common.ValueListWithFixedValues"/></Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/MDC_CUSTOM_OBJECT_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/MDC_CUSTOM_OBJECT_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

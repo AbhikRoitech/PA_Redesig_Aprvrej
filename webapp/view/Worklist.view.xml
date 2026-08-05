@@ -1,0 +1,38 @@
+<mvc:View controllerName="in.abp.hr.redesignation.controller.Worklist" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Page title="Centered Title" class="sapUiContentPadding" showNavButton="true" showHeader="false" scrollable="false">
+		<content>
+			<ScrollContainer height="100%" vertical="true" horizontal="false">
+				<VBox justifyContent="Center" fitContainer="true">
+					<!-- Employee ID above Employee Details -->
+					<VBox visible="{employeeModel>/formVisible}">
+						<f:SimpleForm>
+							<HBox class="formRowHBox">
+								<HBox class="formFieldPair">
+									<Label required="false" text="Employee ID:" class="labelInline"/>
+									<Input width="230px" editable="false" value="{employeeModel>/EmpName} {employeeModel>/EmpId}"/>
+								</HBox>
+								<HBox class="formFieldPair">
+									<Label required="false" text="Effective Date:" class="labelInline"/>
+									<!--<DatePicker id="eFfectDate" width="230px" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy"/>-->
+									<DatePicker id="eFfectDate"
+										value="{path: 'employeeModel>/EffectiveDate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd-MM-yyyy'}}"
+										displayFormat="dd-MM-yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss" editable="falseS"/>
+								</HBox>
+							</HBox>
+						</f:SimpleForm>
+						<VBox id="fragmentContainerREDESIG" class="customGridSpacingA"/>
+					</VBox>
+				</VBox>
+			</ScrollContainer>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<!--<Button type="Back" text="{i18n>Back}" class="normalBtn" press=".onBackPress"/>-->
+				<ToolbarSpacer/>
+				<Button text="Approve" type="Accept" press=".onApprove"/>
+				<Button text="Reject" type="Reject" press=".onReject"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>
