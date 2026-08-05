@@ -108,9 +108,8 @@ sap.ui.define([
 							Designation: oSrvData.Designation || "",
 							manager: oSrvData.ManagerName.replace(/^0+/, "") || "",
 							RM_Designation: oSrvData.ManagerDesig || "",
-							MM_EmpID: oSrvData.MatrixManagerName.replace(/^0+/, "") || "",
-							MM_Designation: oSrvData.MatrixManagerDesig || "",
-							NewRM: oSrvData.NewRm1Name || "",
+							Hod: oSrvData.Hod1Name || "",
+							Hod1Designation: oSrvData.Hod1Designation || "",
 							Status: oSrvData.Status || "Open"
 						});
 
@@ -127,6 +126,32 @@ sap.ui.define([
 					console.error("Error fetching employee details:", oError);
 					sap.m.MessageToast.show("Failed to fetch employee details.");
 				}
+			});
+		},
+
+		setEmployeeAndFeedbackModel: function (oSrvData) {
+			var oView = this.getView();
+			var oEmpModel = oView.getModel("empModel");
+			if (!oEmpModel) {
+				oEmpModel = new JSONModel();
+				oView.setModel(oEmpModel, "empModel");
+			}
+
+			var bHasMatrixManager = oSrvData.NewMatrixManagerId && oSrvData.NewMatrixManagerId.replace(/^0+/, "").length > 0;
+			var sNewRm = "";
+			if (oSrvData.NewRm1Name) {
+				sNewRm = oSrvData.NewRm1Id ? oSrvData.NewRm1Id.replace(/^0+/, "") + " - " + oSrvData.NewRm1Name : oSrvData.NewRm1Name;
+			}
+			var sNewMM = "";
+			if (bHasMatrixManager && oSrvData.NewMatrixManagerName) {
+				sNewMM = oSrvData.NewMatrixManagerId.replace(/^0+/, "") + " - " + oSrvData.NewMatrixManagerName;
+			}
+
+			oEmpModel.setData({
+				NewDesignation: oSrvData.NewDesignation || "",
+				NewRM: sNewRm,
+				MatrixManagerSelected: bHasMatrixManager,
+				NewMMId: sNewMM
 			});
 		},
 

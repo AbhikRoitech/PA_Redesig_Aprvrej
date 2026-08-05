@@ -27,38 +27,19 @@
 				<!-- New Details Section -->
 				<core:Title text="New Assignment"/>
 				<Label text="New Designation"/>
-				<Input id="newDesignation" value="{empModel>/NewDesignation}" liveChange="onDesignationLiveChange"/>
-				<!--<Input value="{ path: 'empModel>/NewDesignation', formatter: '.formatter.uppercase' }"/>-->
+				<Input id="newDesignation" value="{empModel>/NewDesignation}" editable="false"/>
 				<Label text="New RM"/>
-				<Input id="newRMItems" placeholder="Select Options" showSuggestion="true" suggestionItems="{newRMModel>/results}" liveChange=".newRMSearch"
-					suggestionItemSelected="">
-					<suggestionItems>
-						<core:ListItem text="{newRMModel>EmplName} - {newRMModel>EmplId}" additionalText="{newRMModel>EmplId}"/>
-					</suggestionItems>
-				</Input>
-				<!--<ComboBox items="{newRMModel>/results}">-->
-				<!--	<layoutData><FlexItemData growFactor="1"/></layoutData>-->
-				<!--	<core:Item key="{newRMModel>EmplId}" text="{newRMModel>EmplName}-{newRMModel>EmplId}"/>-->
-				<!--</ComboBox>-->
-				<!--<Label text=""/>-->
-				<!--<CheckBox selected="{empModel>/MatrixManagerSelected}" text="Matrix Manager" select="onMatrixCheck"/>-->
-				<!--<Label text="Matrix Manager Emp ID"/>-->
-				<!--<Input value="{empModel>/NewMMId}" enabled="{empModel>/MatrixManagerSelected}"/>-->
+				<Input id="newRMItems" value="{empModel>/NewRM}" editable="false"/>
 			</f:content>
 		</f:SimpleForm>
 		<VBox class="formWithLargeLabels">
-			<CheckBox selected="{empModel>/MatrixManagerSelected}" text="Matrix Manager" select="onMatrixCheck" class="sapUiTinyMarginBegin"/>
-			<f:SimpleForm id="MatrxMngEmpId" class="formWithLargeLabels" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="5"
+			<CheckBox selected="{empModel>/MatrixManagerSelected}" text="Matrix Manager" enabled="false" class="sapUiTinyMarginBegin"/>
+			<f:SimpleForm id="MatrxMngEmpId" class="formWithLargeLabels" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="5"
 				labelSpanM="5" emptySpanXL="0" emptySpanL="0" emptySpanM="0" columnsXL="2" columnsL="2" columnsM="2" columnS="1"
-				singleContainerFullSize="false" visible="false">
+				singleContainerFullSize="false" visible="{empModel>/MatrixManagerSelected}">
 				<f:content>
 					<Label text="Matrix Manager Emp ID"/>
-					<Input id="matrxMngrEmpId" placeholder="Select Manager Id" showSuggestion="true" suggestionItems="{MatrxMngrEmpSetModel>/results}"
-						liveChange=".getMatrixManagerSet" suggestionItemSelected="">
-						<suggestionItems>
-							<core:ListItem text="{MatrxMngrEmpSetModel>EmplName} - {MatrxMngrEmpSetModel>EmplId}" additionalText="{MatrxMngrEmpSetModel>EmplId}"/>
-						</suggestionItems>
-					</Input>
+					<Input id="matrxMngrEmpId" value="{empModel>/NewMMId}" editable="false"/>
 				</f:content>
 			</f:SimpleForm>
 		</VBox>
